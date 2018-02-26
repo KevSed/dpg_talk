@@ -51,64 +51,129 @@
         \item superposition of multiple photon signals
         \item reconstruct arrival time of single photons by subtraction their pulse shapes 
         \item smaller file size: possible to compress all FACT data to fit on one 10TB drive 
-        \item simplify \textit{exchange} and \textit{analysis}) , gain timing knowledge
-        \item do physics analysis on a SiPM based IACT
+        \item simplify \textit{exchange} and \textit{analysis}, gain timing knowledge
+        \item do physics analysis on an SiPM based IACT
     \end{itemize}
 \end{frame}
 
-\section{The Data set: Crab Nebula}
+\section{The Data Set: Crab Nebula}
 
 \begin{frame}[t]{The Crab Nebula}
   \begin{multicols}{2}
     \begin{figure}
         \centering
-        \includegraphics[width=0.6\textwidth]{fig/crab.png}
+        \includegraphics[width=0.4\textwidth]{fig/crab.jpg}
     \end{figure}
     \columnbreak
     \vspace*{\fill}
-      \begin{itemize}
+    \begin{itemize}
         \item remnant of super nova explosion
-        \item distance is about $\SI{6000}{\lightyear}$.
+        \item distance is about $6000\,\text{ly}$
         \item neutron star at the centre of cloud
     \end{itemize}
     \vspace*{\fill}
   \end{multicols}
 \end{frame}
 
-\section{The Data set: FACT open data crab sample}
+\section{The Data Set: FACT open data crab sample}
 
-\begin{frame}[t]{The Crab Nebula}
-  \begin{multicols}{2}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.6\textwidth]{fig/crab.jpg}
-    \end{figure}
+\begin{frame}[t]{The Data set: FACT open data crab sample}
+    \begin{multicols}{2}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.4\textwidth]{fig/cond.png}
+        \end{figure}
     \columnbreak
     \vspace*{\fill}
-      \begin{itemize}
-        \item remnant of super nova explosion
-        \item distance is about $\SI{6000}{\lightyear}$.
-        \item neutron star at the centre of cloud
-    \end{itemize}
+        \begin{itemize}
+            \item \url{https://fact-project.org/data}
+            \item Crab Nebula observations from November 2013
+            \item including gamma-ray and proton simulations
+            \item $17.7$ hours of observations
+        \end{itemize}
     \vspace*{\fill}
   \end{multicols}
 \end{frame}
 
-%------------------------------------------------------------------------------------------
+\section{The Analysis}
+
+\begin{frame}[t]{The Analysis}
+    \begin{itemize}
+        \item \textbf{{\color{tugreen} aim}}: test the Photon Stream data in a physics analysis
+        \item \textbf{{\color{tugreen} Crab Nebula}}: well measured source of cosmic gamma rays $\rightarrow$ comparative analysis 
+    \end{itemize}
+FACT Analysis chain:
+    \begin{enumerate}
+        \item calibration of data
+        \item image cleaning $\rightarrow$ pure shower image remains
+    \end{enumerate}
+\textbf{{\color{tugreen} This Analysis}} so far:
+    \begin{enumerate}\addtocounter{enumi}{2}
+        \item Parametrization: calculate useful parameters
+        \item distinguish protons (background) from gammas
+        \item reconstruct direction and energy of particles
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[t]{Parameterization}
+    \begin{multicols}{2}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{fig/hillas.png}
+        \end{figure}
+    \columnbreak
+Hillas parameters:
+    \begin{itemize}
+        \item \textbf{{\color{tugreen} size}}: number of photons in cluster
+        \item \textbf{{\color{tugreen} length}}: std. dev. along long half-axis
+        \item \textbf{{\color{tugreen} width}}: std. dev. along short half-axis
+        \item \textbf{{\color{tugreen} delta}}: angle between length and disp
+    \end{itemize}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}[t]{Parameterization}
+    \begin{multicols}{2}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{fig/disp.png}
+        \end{figure}
+    \columnbreak
+Source position reconstruction via disp-method:
+    \begin{itemize}
+        \item \textbf{{\color{tugreen} |disp|}}: distance from centre of gravity to target
+        \item \textbf{{\color{tugreen} sgn(disp)}}: Head\/Tail-Disambiguation
+        \item \textbf{{\color{tugreen} theta}}: distance between reconstructed and true origin
+    \end{itemize}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}[t]{Tools}
+Machine learning with FACT classifier-tools \url{https://github.com/fact-project/classifier-tools}
+\textbf{{\color{tugreen} Energy estimation}}:
+\begin{itemize}
+    \item regressor: $\texttt{klaas_energy_regressor}$
+\end{itemize}
+\textbf{{\color{tugreen} Gamma-hadron-separation}}:
+\begin{itemize}
+    \item classification: $\texttt{klaas_separation_model}$
+\end{itemize}
+\textbf{{\color{tugreen} Origin reconstruction}}:
+\begin{itemize}
+    \item two step task: regression of $\text{|disp|}$ and classification of $\text{sgn(disp)}$
+    \item regression and classification: $\texttt{klaas_disp_regressor}$
+\end{itemize}
+\end{frame}
+
+
+%-------------------------------------------------------------------------------
 \section{Back up}
-%------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
 \appendix
-
-\begin{frame}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.78\textwidth]{fig/hits_bfield.pdf}
-  \end{figure}
-\end{frame}
 
 \begin{frame}[t]{}
   \centering
-  \textcolor{green}{\Huge{Back Up}}
+  \textcolor{tugreen}{\Huge{Back Up}}
 \end{frame}
 
 \end{document}
