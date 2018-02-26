@@ -1,0 +1,114 @@
+\input{header.tex}
+
+\begin{document}
+
+\maketitle
+
+\section{The First G-APD Cherenkov Telescope}
+
+\begin{frame}[t]{The First G-APD Cherenkov Telescope}
+  \begin{multicols}{2}
+    \vspace*{\fill}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{fig/fact.png}
+    \end{figure}
+    \columnbreak
+    \vspace*{\fill}
+      \begin{itemize}
+        \item located on Roque des los Muchachos, La Palma
+        \item build to demonstrate novel light sensors \textit{silicon photo multipliers} (SiPM)
+        \item offer possibility to operate under much brighter light conditions
+        \item camera has single photon resolution
+    \end{itemize}
+    \vspace*{\fill}
+  \end{multicols}
+\end{frame}
+
+\section{The Photon Stream Data}
+
+\begin{frame}[t]{The Photon Stream Data}
+  \begin{multicols}{2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/event/example_event_small-15.png}
+    \end{figure}
+    \columnbreak
+    \vspace*{\fill}
+      \begin{itemize}
+        \item represent \textbf{I}maging \textbf{A}tmospheric \textbf{C}herenkov \textbf{T}elescope events using single photons
+        \item list of lists of arrival times
+    \end{itemize}
+    \vspace*{\fill}
+  \end{multicols}
+\end{frame}
+
+\begin{frame}[t]{The Photon Stream Data}
+    \large{\textbf{Rationale:}}
+    \begin{itemize}
+        \item FACT records data in format close to readout hardware
+        \item raw data tedious to do physics analysis with: physics format required! \\ $\rightarrow$ \textbf{Photon Stream}
+        \item superposition of multiple photon signals
+        \item reconstruct arrival time of single photons by subtraction their pulse shapes 
+        \item smaller file size: possible to compress all FACT data to fit on one 10TB drive 
+        \item simplify \textit{exchange} and \textit{analysis}) , gain timing knowledge
+        \item do physics analysis on a SiPM based IACT
+    \end{itemize}
+\end{frame}
+
+\section{The Data set: Crab Nebula}
+
+\begin{frame}[t]{The Crab Nebula}
+  \begin{multicols}{2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/crab.png}
+    \end{figure}
+    \columnbreak
+    \vspace*{\fill}
+      \begin{itemize}
+        \item remnant of super nova explosion
+        \item distance is about $\SI{6000}{\lightyear}$.
+        \item neutron star at the centre of cloud
+    \end{itemize}
+    \vspace*{\fill}
+  \end{multicols}
+\end{frame}
+
+\section{The Data set: FACT open data crab sample}
+
+\begin{frame}[t]{The Crab Nebula}
+  \begin{multicols}{2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/crab.jpg}
+    \end{figure}
+    \columnbreak
+    \vspace*{\fill}
+      \begin{itemize}
+        \item remnant of super nova explosion
+        \item distance is about $\SI{6000}{\lightyear}$.
+        \item neutron star at the centre of cloud
+    \end{itemize}
+    \vspace*{\fill}
+  \end{multicols}
+\end{frame}
+
+%------------------------------------------------------------------------------------------
+\section{Back up}
+%------------------------------------------------------------------------------------------
+\appendix
+
+\begin{frame}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.78\textwidth]{fig/hits_bfield.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[t]{}
+  \centering
+  \textcolor{green}{\Huge{Back Up}}
+\end{frame}
+
+\end{document}
