@@ -27,14 +27,23 @@
 \section{Photon Stream}
 
 \begin{frame}[t]{The Photon Stream Data}
-    \large{\textbf{Rationale:}}
-    \begin{itemize}
-        \item FACT records data in format close to readout hardware
-        \item not intended as physics format \\ $\rightarrow$ \textbf{Photon Stream}
-        \item superposition of multiple photon signals
-        \item reconstruct arrival time of single photons by substracting their pulse shapes
-        \item list of lists of arrival times 
-    \end{itemize}
+  \begin{multicols}{2}
+  \begin{figure}
+      \centering
+      \includegraphics[width=0.5\textwidth]{fig/standard.png}
+      \caption{Standard FACT events.}
+  \end{figure}
+  \columnbreak
+  \textbf{Photon Stream:}
+  \begin{itemize}
+      \item FACT records data in format close to readout hardware
+      \item not intended as physics format \\ $\rightarrow$ \textbf{Photon Stream}
+      \item superposition of multiple photon signals
+      \item reconstruct arrival time of single photons by substracting their pulse shapes
+      \item list of lists of arrival times
+  \end{itemize}
+  \end{multicols}
+
 \end{frame}
 
 \begin{frame}[t]{The Photon Stream Data}
@@ -50,10 +59,10 @@
     \end{figure}
     \columnbreak
     \begin{itemize}
-        \item smaller file size: possible to compress all FACT data to fit on one 10TB drive 
+        \item smaller file size: possible to compress all FACT data to fit on one 10TB drive
         \item simplify \textit{exchange} and \textit{analysis}, gain timing knowledge
         \item do cluster based image cleaning
-        \item do physics analysis on an SiPM based IACT    
+        \item do physics analysis on an SiPM based IACT
     \end{itemize}
     \end{multicols}
 \end{frame}
@@ -84,7 +93,7 @@
 
 \begin{frame}[t]{Analysis}
 \begin{description}[Crab Nebula]
-    \item[aim] test the Photon Stream data in a physics analysis 
+    \item[aim] test the Photon Stream data in a physics analysis
     \item[Crab Nebula] well measured source of cosmic gamma rays $\rightarrow$ comparative analysis
 \end{description}
 FACT Analysis chain:
@@ -114,7 +123,7 @@ FACT Analysis chain:
 Hillas parameters: \\
     \begin{itemize}
         \setlength\itemsep{1em}
-        \item \textbf{{\color{tugreen} size}}: number of photons in cluster 
+        \item \textbf{{\color{tugreen} size}}: number of photons in cluster
         \item \textbf{{\color{tugreen} length}}: std. dev. along long half-axis
         \item \textbf{{\color{tugreen} width}}: std. dev. along short half-axis
         \item \textbf{{\color{tugreen} delta}}: angle between length and disp
@@ -170,7 +179,7 @@ Mean $\text{R}^2$ score from CV: $0.6065\,\pm\,0.0092$
 
 \begin{frame}[t]{Separation}
 
-Trained on $100\,000$ signal and background events 
+Trained on $100\,000$ signal and background events
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth,page=1]{fig/separation_performance.pdf}
@@ -179,38 +188,56 @@ Trained on $100\,000$ signal and background events
 
 \begin{frame}[t]{Origin reconstruction}
 \begin{itemize}
-    \item mean accuracy for sgn(disp): $\SI{57.15(15)}{\percent}$
-    \item mean $\text{R}^2$ score for disp: $0.4476\,\pm\,0.0036$
+    \item mean accuracy for sgn(disp): $\SI{75.99(22)}{\percent}$
+    \item mean $\text{R}^2$ score for disp: $0.5429\,\pm\,0.0036$
 \end{itemize}
 \begin{multicols}{2}
 \begin{figure}
     \centering
-    \includegraphics[width=0.48\textwidth]{fig/theta.pdf}
+    \includegraphics[width=0.48\textwidth]{fig/theta_whole.pdf}
 \end{figure}
 \columnbreak
 \begin{figure}
     \centering
-    \includegraphics[width=0.48\textwidth]{example-image-b.pdf}
+    \includegraphics[width=0.48\textwidth]{fig/theta_whole.pdf}
 \end{figure}
 \end{multicols}
 \end{frame}
 
+
 \section{Summary}
 
+
+
 \begin{frame}[t]{Summary}
-Works very well already! \\
-\vspace{10px}
-\textbf{{\color{tugreen} Comparison with FACT standard analysis}}
-\begin{itemize}
-    \item significance on crab sample detection: $24.2\,\sigma$ as compared to $X\,\sigma$
-    \item (compare $\theta^2$-plots)
-    \item separation AUC ROC: $0.89$ as compared to $0.8109$ (this analysis)
-\end{itemize}
+Works well already! \\
+\begin{table}
+  \centering
+  \begin{tabular}{c
+                  c
+                  S[table-format=1.2]
+                  S[table-format=1.4(2)]
+                  S[table-format=1.4(2)]}
+    \toprule
+    {} & {significance crab} & {separation AUC ROC} & {sign accuracy} & {disp $\text{R}^2$} \\
+    \midrule
+    This analysis & $7.0\,\sigma$ & 0.83 & 0.7599(22)  & 0.5429(36)  \\
+    Std analysis & $24.2\,\sigma$ & 0.89 & 0.75        & 0.6(2)  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+% \vspace{10px}
+% \textbf{{\color{tugreen} Comparison with FACT standard analysis}}
+% \begin{itemize}
+%     \item significance on crab sample detection: $24.2\,\sigma$ as compared to $X\,\sigma$
+%     \item separation AUC ROC: $0.89$ as compared to $0.83$ (this analysis)
+%     \item disp method:
+% \end{itemize}
 \vspace{20px}
 \textbf{{\color{tugreen} Outlook}}
 \begin{itemize}
     \item run analysis on more data
-    \item apply models to more data
+    \item apply cuts on data
     \item improve hyper-parameters of classifier-tools and clustering
     \item improve feature selection $\rightarrow$ feature engineering
 \end{itemize}
@@ -221,7 +248,7 @@ Works very well already! \\
 % \section{Back up}
 % %-------------------------------------------------------------------------------
 % \appendix
-% 
+%
 % \begin{frame}[t]{}
 %   \centering
 %   \textcolor{tugreen}{\Huge{Back Up}}
