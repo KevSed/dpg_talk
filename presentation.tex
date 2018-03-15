@@ -7,64 +7,64 @@
 \section{The First G-APD Cherenkov Telescope}
 
 \begin{frame}[t]{The First G-APD Cherenkov Telescope}
-  \begin{multicols}{2}
-    \vspace*{\fill}
+  % \begin{multicols}{2}
+    % \vspace*{\fill}
     \begin{figure}
-        \centering\includegraphics[width=0.5\textwidth]{fig/fact.png}
+        \centering\includegraphics[width=0.65\textwidth]{fig/fact.png}
     \end{figure}
-    \columnbreak
-    \vspace*{\fill}
-      \begin{itemize}
-        \item located on Roque des los Muchachos, La Palma
-        \item build to demonstrate novel light sensors \textit{silicon photo multipliers} (SiPM)
-        \item offer possibility to operate under much brighter light conditions
-        \item camera has single photon resolution
-    \end{itemize}
-    \vspace*{\fill}
-  \end{multicols}
+    % \columnbreak
+    % \vspace*{\fill}
+    %   \begin{itemize}
+    %     \item located on Roque des los Muchachos, La Palma
+    %     \item build to demonstrate novel light sensors \textit{silicon photo multipliers} (SiPM)
+    %     \item offer possibility to operate under much brighter light conditions
+    %     \item camera has single photon resolution
+    % \end{itemize}
+    % \vspace*{\fill}
+  % \end{multicols}
 \end{frame}
 
 \section{Photon Stream}
 
 \begin{frame}[t]{The Photon Stream Data}
-  \begin{multicols}{2}
-  \begin{figure}
-      \centering
-      \includegraphics[width=0.5\textwidth]{fig/standard.png}
-      \caption{Standard FACT events.}
-  \end{figure}
-  \columnbreak
-  \textbf{Photon Stream:}
-  \begin{itemize}
-      \item FACT records data in format close to readout hardware
-      \item not intended as physics format \\ $\rightarrow$ \textbf{Photon Stream}
-      \item superposition of multiple photon signals
-      \item reconstruct arrival time of single photons by substracting their pulse shapes
-      \item list of lists of arrival times
-  \end{itemize}
-  \end{multicols}
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
+        \begin{overprint}
+              \onslide<1>\vspace*{\fill}\includegraphics[width=\textwidth]{fig/standard.png}
+              \onslide<2>\vspace*{\fill}\includegraphics[width=\textwidth]{fig/lol.png}
+        \end{overprint}
+  \end{column}
+  \begin{column}{0.475\textwidth}
+      \begin{itemize}
+          \item FACT records data in format close to readout hardware
+          \item superposition of multiple photon signals
+          \item not intended as physics format \\ $\rightarrow$ \textbf{Photon Stream}
+          \item list of individual photons (arrival times)
+      \end{itemize}
+  \end{column}
+\end{columns}
 
 \end{frame}
 
 \begin{frame}[t]{The Photon Stream Data}
-    \begin{multicols}{2}
-    \begin{figure}
-        \centering
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
         \begin{overprint}
-            \onslide<1>\includegraphics[width=0.6\textwidth]{fig/event/example_event_small-14.png}
-            \caption{Represent \textbf{I}maging \textbf{A}tmospheric \textbf{C}herenkov \textbf{T}elescope events using single photons}
-            \onslide<2>\includegraphics[width=0.6\textwidth]{fig/event/example_event_small-15.png}
-            \caption{Represent \textbf{I}maging \textbf{A}tmospheric \textbf{C}herenkov \textbf{T}elescope events using single photons}
-    \end{overprint}
-    \end{figure}
-    \columnbreak
-    \begin{itemize}
-        \item smaller file size: possible to compress all FACT data to fit on one 10TB drive
-        \item simplify \textit{exchange} and \textit{analysis}, gain timing knowledge
-        \item do cluster based image cleaning
-        \item do physics analysis on an SiPM based IACT
-    \end{itemize}
-    \end{multicols}
+            \onslide<1>\includegraphics[width=1.2\textwidth]{fig/event2.png}
+            \onslide<2>\includegraphics[width=1.2\textwidth]{fig/event1.png}
+        \end{overprint}
+    \end{column}
+    \begin{column}{0.475\textwidth}
+        \begin{itemize}
+            \vspace*{\fill}
+            \item smaller file size: possible to compress all FACT data to fit on one 10TB drive
+            \item simplify \textit{exchange} and \textit{analysis}, gain timing knowledge
+            \item DBSCAN: cluster based image cleaning
+            \item exptected improvement for cleaning
+            % \item do physics analysis on an SiPM based IACT
+        \end{itemize}
+    \end{column}
+\end{columns}
 \end{frame}
 
 
@@ -72,12 +72,11 @@
 \section{Data Set: FACT open data crab sample}
 
 \begin{frame}[t]{The Data set: FACT open data crab sample}
-    \begin{multicols}{2}
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.4\textwidth]{fig/cond.png}
-        \end{figure}
-    \columnbreak
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
+        \includegraphics[width=\textwidth]{fig/cond.png}
+    \end{column}
+    \begin{column}{0.475\textwidth}
     \vspace*{\fill}
         \begin{itemize}
             \item \url{https://fact-project.org/data}
@@ -85,123 +84,137 @@
             \item including gamma-ray and proton simulations
             \item $17.7$ hours of observations
         \end{itemize}
-    \vspace*{\fill}
-  \end{multicols}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \section{Analysis}
 
 \begin{frame}[t]{Analysis}
 \begin{description}[Crab Nebula]
-    \item[aim] test the Photon Stream data in a physics analysis
-    \item[Crab Nebula] well measured source of cosmic gamma rays $\rightarrow$ comparative analysis
+    \item[aim] proof of concept: generate preliminary physics results
+    \item[Crab Nebula] well measured source of cosmic gamma rays $\rightarrow$ standard candle analysis
 \end{description}
-FACT Analysis chain:
-    \begin{enumerate}
-        \item calibration of data
-        \item image cleaning $\rightarrow$ pure shower image remains
-    \end{enumerate}
-\textbf{{\color{tugreen} This Analysis}} so far:
-    \begin{enumerate}\addtocounter{enumi}{2}
-        \item Parametrization: calculate useful parameters
-        \item distinguish protons (background) from gammas
-        \item reconstruct direction and energy of particles
-    \end{enumerate}
-\begin{framed}
-    \centering
-    This is only the classical analysis approach so far!
-\end{framed}
+\vspace{\fill}
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
+        \textbf{{\color{tugreen} \underline{Standard Analysis chain}}}
+        \begin{description}[parametrization]
+            \item[calibration] identifying large pulses
+            \item[image cleaning]
+            \item[parametrization] Hillas
+            \item[separation]
+            \item[reconstruction]
+        \end{description}
+    \end{column}
+    \begin{column}{0.475\textwidth}
+        \textbf{{\color{tugreen} \underline{Photon Stream Analysis chain}}}
+            \begin{description}[parametrization]
+                \item[calibration] extracting single photons
+                \item[image cleaning] DBSCAN
+                \item[parametrization] Hillas
+                \item[separation]
+                \item[reconstruction]
+            \end{description}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[t]{Parameterization}
-    \begin{multicols}{2}
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.5\textwidth]{fig/hillas.png}
-        \end{figure}
-    \columnbreak
-Hillas parameters: \\
-    \begin{itemize}
-        \setlength\itemsep{1em}
-        \item \textbf{{\color{tugreen} size}}: number of photons in cluster
-        \item \textbf{{\color{tugreen} length}}: std. dev. along long half-axis
-        \item \textbf{{\color{tugreen} width}}: std. dev. along short half-axis
-        \item \textbf{{\color{tugreen} delta}}: angle between length and disp
-        \item \textbf{{\color{tugreen} skewness/ kurtosis}}: higher order statistical moments along half-axes
-    \end{itemize}
-    \end{multicols}
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
+        \vspace{20px}
+        \includegraphics[width=0.98\textwidth]{fig/hillas.png}
+    \end{column}
+    \begin{column}{0.475\textwidth}
+    Hillas parameters (projected back to 2D): \\
+        \begin{itemize}
+            \setlength\itemsep{1em}
+            \item \textbf{{\color{tugreen} size}}: number of photons in cluster
+            \item \textbf{{\color{tugreen} length}}: std. dev. along long half-axis
+            \item \textbf{{\color{tugreen} width}}: std. dev. along short half-axis
+            \item \textbf{{\color{tugreen} delta}}: angle between length and disp
+            \item \textbf{{\color{tugreen} skewness/ kurtosis}}: higher order statistical moments along half-axes in cluster system
+        \end{itemize}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[t]{Parameterization}
-    \begin{multicols}{2}
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.5\textwidth]{fig/disp.png}
-        \end{figure}
-    \columnbreak
-Source position reconstruction via disp-method:
-    \begin{itemize}
-        \item \textbf{{\color{tugreen} |disp|}}: distance from centre of gravity to target
-        \item \textbf{{\color{tugreen} sgn(disp)}}: Head/Tail-Disambiguation
-        \item \textbf{{\color{tugreen} theta}}: distance between reconstructed and true origin
-        \item \textbf{{\color{tugreen} skewness/ kurtosis}}: higher order statistical moments along half-axes in cluster system
-    \end{itemize}
-    \end{multicols}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.475\textwidth}
+            \includegraphics[width=\textwidth]{fig/disp.png}
+        \end{column}
+        \begin{column}{0.475\textwidth}
+            Source position reconstruction via disp-method:
+            \begin{itemize}
+                \item \textbf{{\color{tugreen} |disp|}}: distance from centre of gravity to target
+                \item \textbf{{\color{tugreen} sgn(disp)}}: Head/Tail-Disambiguation
+                \item \textbf{{\color{tugreen} theta}}: distance between reconstructed and true origin
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}[t]{Tools}
 Machine learning with FACT classifier-tools, using 5-fold cross validation  \url{https://github.com/fact-project/classifier-tools} \\
 \textbf{{\color{tugreen} Energy estimation}}:
 \begin{itemize}
-    \item random forest regressor (30 estimators): \texttt{klaas\_energy\_regressor}
+    \item random forest regressor (30 estimators)
 \end{itemize}
 \textbf{{\color{tugreen} Gamma-hadron-separation}}:
 \begin{itemize}
-    \item random forest classifier (50 estimators): \texttt{klaas\_separation\_model}
+    \item random forest classifier (50 estimators)
 \end{itemize}
 \textbf{{\color{tugreen} Origin reconstruction}}:
 \begin{itemize}
     \item two step task: regression of |disp| and classification of sgn(disp)
-    \item random forest regressor and classifier: \texttt{klaas\_disp\_regressor}
+    \item random forest regressor and classifier
 \end{itemize}
+
+\begin{block}{Open Crab Sample Analysis}
+    \url{https://github.com/fact-project/open_crab_sample_analysis}
+\end{block}
 \end{frame}
 
 \section{Results}
 \begin{frame}[t]{Energy estimation}
-
-Mean $\text{R}^2$ score from CV: $0.6065\,\pm\,0.0092$
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth,page=1]{fig/energy-performance.pdf}
-\end{figure}
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
+        \vspace{-25px}
+        \includegraphics[width=1.15\textwidth,page=1]{fig/energy_performance.pdf}
+    \end{column}
+    \begin{column}{0.475\textwidth}
+        \includegraphics[width=\textwidth]{fig/energy_migration.pdf}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[t]{Separation}
-
-Trained on $100\,000$ signal and background events
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth,page=1]{fig/separation_performance.pdf}
-\end{figure}
+\begin{columns}[onlytextwidth]
+    \begin{column}{0.475\textwidth}
+        \includegraphics[width=\textwidth,page=1]{fig/separation_performance.pdf}
+    \end{column}
+    \begin{column}{0.475\textwidth}
+        \includegraphics[width=\textwidth,page=1]{fig/separation_performance.pdf}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[t]{Origin reconstruction}
-\begin{itemize}
-    \item mean accuracy for sgn(disp): $\SI{75.99(22)}{\percent}$
-    \item mean $\text{R}^2$ score for disp: $0.5429\,\pm\,0.0036$
-\end{itemize}
-\begin{multicols}{2}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.48\textwidth]{fig/theta_whole.pdf}
-\end{figure}
-\columnbreak
-\begin{figure}
-    \centering
-    \includegraphics[width=0.48\textwidth]{fig/theta_whole.pdf}
-\end{figure}
-\end{multicols}
+\begin{columns}[onlytextwidth]
+\begin{column}{0.475\textwidth}
+    \includegraphics[width=\textwidth]{fig/theta2_plot.pdf}
+\end{column}
+\hfill%
+\begin{column}{0.475\textwidth}
+    \includegraphics[width=\textwidth]{fig/theta2.pdf}
+\end{column}
+% \begin{itemize}
+%     \item mean accuracy for sgn(disp): $\SI{83}{\percent}$
+%     \item mean $\text{R}^2$ score for disp: $0.624\,\pm\,0.003$
+% \end{itemize}
+\end{columns}
 \end{frame}
 
 
@@ -210,22 +223,45 @@ Trained on $100\,000$ signal and background events
 
 
 \begin{frame}[t]{Summary}
-Works well already! \\
-\begin{table}
-  \centering
-  \begin{tabular}{c
-                  c
-                  S[table-format=1.2]
-                  S[table-format=1.4(2)]
-                  S[table-format=1.4(2)]}
-    \toprule
-    {} & {significance crab} & {separation AUC ROC} & {sign accuracy} & {disp $\text{R}^2$} \\
-    \midrule
-    This analysis & $8.3\,\sigma$ & 0.83 & 0.7599(22)  & 0.5429(36)  \\
-    Std analysis & $24.2\,\sigma$ & 0.89 & 0.75        & 0.6(2)  \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+    \begin{columns}[onlytextwidth]
+        \begin{column}{0.3\textwidth}
+            \includegraphics[width=1.2\textwidth]{fig/event1.png}
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            \includegraphics[width=\textwidth]{fig/theta2_plot.pdf}
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            \includegraphics[width=\textwidth]{fig/cond.png}
+        \end{column}
+    \end{columns}
+% \vfill%
+\textbf{{\color{tugreen} Outlook}} \\
+This is just the beginning!
+\begin{itemize}
+    \item improve feature selection $\rightarrow$ feature engineering
+        \begin{itemize}
+            \item[$-$] implement more "standard" features
+            \item[$-$] timing information (3-dimensional point-cloud)
+        \end{itemize}
+    \item improve cuts on data, hyper-parameters of classifier-tools and clustering
+\end{itemize}
+\end{frame}
+% Works well already! \\
+% \begin{table}
+%   \centering
+%   \begin{tabular}{c
+%                   c
+%                   S[table-format=1.2]
+%                   S[table-format=1.4(2)]
+%                   S[table-format=1.4(2)]}
+%     \toprule
+%     {} & {significance crab} & {separation AUC ROC} & {sign accuracy} & {disp $\text{R}^2$} \\
+%     \midrule
+%     This analysis & $14.2\,\sigma$ & 0.87 & 0.83  & 0.624(3)  \\
+%     Std analysis & $24.2\,\sigma$ & 0.89 & 0.75        & 0.6(2)  \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
 % \vspace{10px}
 % \textbf{{\color{tugreen} Comparison with FACT standard analysis}}
 % \begin{itemize}
@@ -233,15 +269,7 @@ Works well already! \\
 %     \item separation AUC ROC: $0.89$ as compared to $0.83$ (this analysis)
 %     \item disp method:
 % \end{itemize}
-\vspace{20px}
-\textbf{{\color{tugreen} Outlook}}
-\begin{itemize}
-    \item run analysis on more data
-    \item apply cuts on data
-    \item improve hyper-parameters of classifier-tools and clustering
-    \item improve feature selection $\rightarrow$ feature engineering
-\end{itemize}
-\end{frame}
+
 
 
 % %-------------------------------------------------------------------------------
