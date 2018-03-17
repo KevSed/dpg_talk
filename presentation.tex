@@ -7,31 +7,38 @@
 \section{The First G-APD Cherenkov Telescope}
 
 \begin{frame}[t]{The First G-APD Cherenkov Telescope}
-  % \begin{multicols}{2}
-    % \vspace*{\fill}
+
     \begin{figure}
         \centering\includegraphics[width=0.65\textwidth]{fig/fact.png}
     \end{figure}
-    % \columnbreak
-    % \vspace*{\fill}
-    %   \begin{itemize}
-    %     \item located on Roque des los Muchachos, La Palma
-    %     \item build to demonstrate novel light sensors \textit{silicon photo multipliers} (SiPM)
-    %     \item offer possibility to operate under much brighter light conditions
-    %     \item camera has single photon resolution
-    % \end{itemize}
-    % \vspace*{\fill}
-  % \end{multicols}
+
 \end{frame}
 
 \section{Photon Stream}
 
-\begin{frame}[t]{The Photon Stream Data}
+\begin{frame}[c]{The Photon Stream Data}
 \begin{columns}[onlytextwidth]
     \begin{column}{0.475\textwidth}
         \begin{overprint}
-              \onslide<1>\vspace*{\fill}\includegraphics[width=\textwidth]{fig/standard.png}
-              \onslide<2>\vspace*{\fill}\includegraphics[width=\textwidth]{fig/lol.png}
+              \onslide<1>
+              \vspace{\fill}
+              \includegraphics[width=1.15\textwidth]{fig/standard.png}
+              \onslide<2>
+              % \includegraphics[width=1.15\textwidth]{fig/lol2.png}
+              \vspace{\fill}
+              \begin{equation*}
+                  \begin{bmatrix}
+                      [59,\,84] \\
+                       [102,\,93,\,103] \\
+                       [58] \\
+                       [65,\,79,\,97] \\
+                       [\,] \\
+                       [125,\,43,\,68] \\
+                       [102] \\
+                       [68,\,100,\,123] \\
+                       \cdots
+                \end{bmatrix}
+            \end{equation*}
         \end{overprint}
   \end{column}
   \begin{column}{0.475\textwidth}
@@ -46,7 +53,7 @@
 
 \end{frame}
 
-\begin{frame}[t]{The Photon Stream Data}
+\begin{frame}[c]{The Photon Stream Data}
 \begin{columns}[onlytextwidth]
     \begin{column}{0.475\textwidth}
         \begin{overprint}
@@ -56,12 +63,10 @@
     \end{column}
     \begin{column}{0.475\textwidth}
         \begin{itemize}
-            \vspace*{\fill}
             \item smaller file size: possible to compress all FACT data to fit on one 10TB drive
             \item simplify \textit{exchange} and \textit{analysis}, gain timing knowledge
             \item DBSCAN: cluster based image cleaning
             \item exptected improvement for cleaning
-            % \item do physics analysis on an SiPM based IACT
         \end{itemize}
     \end{column}
 \end{columns}
@@ -74,7 +79,7 @@
 \begin{frame}[t]{The Data set: FACT open data crab sample}
 \begin{columns}[onlytextwidth]
     \begin{column}{0.475\textwidth}
-        \includegraphics[width=\textwidth]{fig/cond.png}
+        \includegraphics[width=0.9\textwidth]{fig/open.png}
     \end{column}
     \begin{column}{0.475\textwidth}
     \vspace*{\fill}
@@ -98,24 +103,24 @@
 \vspace{\fill}
 \begin{columns}[onlytextwidth]
     \begin{column}{0.475\textwidth}
-        \textbf{{\color{tugreen} \underline{Standard Analysis chain}}}
-        \begin{description}[parametrization]
-            \item[calibration] identifying large pulses
-            \item[image cleaning]
-            \item[parametrization] Hillas
-            \item[separation]
-            \item[reconstruction]
-        \end{description}
-    \end{column}
-    \begin{column}{0.475\textwidth}
         \textbf{{\color{tugreen} \underline{Photon Stream Analysis chain}}}
             \begin{description}[parametrization]
                 \item[calibration] extracting single photons
                 \item[image cleaning] DBSCAN
-                \item[parametrization] Hillas
+                \item[parametrization] parameter set A
                 \item[separation]
                 \item[reconstruction]
             \end{description}
+    \end{column}
+    \begin{column}{0.475\textwidth}
+        \textbf{{\color{tugreen} \underline{Standard Analysis chain}}}
+        \begin{description}[parametrization]
+            \item[calibration] identifying large pulses
+            \item[image cleaning] time and pixel thresholds
+            \item[parametrization] parameter set B
+            \item[separation]
+            \item[reconstruction]
+        \end{description}
     \end{column}
 \end{columns}
 \end{frame}
@@ -193,10 +198,10 @@ Machine learning with FACT classifier-tools, using 5-fold cross validation  \url
 \begin{frame}[t]{Separation}
 \begin{columns}[onlytextwidth]
     \begin{column}{0.475\textwidth}
-        \includegraphics[width=\textwidth,page=1]{fig/separation_performance.pdf}
+        \includegraphics[width=1.2\textwidth,page=1]{fig/separation_performance.pdf}
     \end{column}
     \begin{column}{0.475\textwidth}
-        \includegraphics[width=\textwidth,page=1]{fig/separation_performance.pdf}
+        \includegraphics[width=1.2\textwidth,page=1]{fig/separator_performance.pdf}
     \end{column}
 \end{columns}
 \end{frame}
@@ -210,10 +215,6 @@ Machine learning with FACT classifier-tools, using 5-fold cross validation  \url
 \begin{column}{0.475\textwidth}
     \includegraphics[width=\textwidth]{fig/theta2.pdf}
 \end{column}
-% \begin{itemize}
-%     \item mean accuracy for sgn(disp): $\SI{83}{\percent}$
-%     \item mean $\text{R}^2$ score for disp: $0.624\,\pm\,0.003$
-% \end{itemize}
 \end{columns}
 \end{frame}
 
@@ -228,17 +229,17 @@ Machine learning with FACT classifier-tools, using 5-fold cross validation  \url
             \includegraphics[width=1.2\textwidth]{fig/event1.png}
         \end{column}
         \begin{column}{0.3\textwidth}
-            \includegraphics[width=\textwidth]{fig/theta2_plot.pdf}
+            \includegraphics[width=\textwidth]{fig/cond.png}
         \end{column}
         \begin{column}{0.3\textwidth}
-            \includegraphics[width=\textwidth]{fig/cond.png}
+            \includegraphics[width=\textwidth]{fig/theta2_plot.pdf}
         \end{column}
     \end{columns}
 % \vfill%
 \textbf{{\color{tugreen} Outlook}} \\
 This is just the beginning!
 \begin{itemize}
-    \item improve feature selection $\rightarrow$ feature engineering
+    \item feature engineering
         \begin{itemize}
             \item[$-$] implement more "standard" features
             \item[$-$] timing information (3-dimensional point-cloud)
@@ -246,40 +247,94 @@ This is just the beginning!
     \item improve cuts on data, hyper-parameters of classifier-tools and clustering
 \end{itemize}
 \end{frame}
-% Works well already! \\
-% \begin{table}
-%   \centering
-%   \begin{tabular}{c
-%                   c
-%                   S[table-format=1.2]
-%                   S[table-format=1.4(2)]
-%                   S[table-format=1.4(2)]}
-%     \toprule
-%     {} & {significance crab} & {separation AUC ROC} & {sign accuracy} & {disp $\text{R}^2$} \\
-%     \midrule
-%     This analysis & $14.2\,\sigma$ & 0.87 & 0.83  & 0.624(3)  \\
-%     Std analysis & $24.2\,\sigma$ & 0.89 & 0.75        & 0.6(2)  \\
-%     \bottomrule
-%   \end{tabular}
-% \end{table}
-% \vspace{10px}
-% \textbf{{\color{tugreen} Comparison with FACT standard analysis}}
-% \begin{itemize}
-%     \item significance on crab sample detection: $24.2\,\sigma$ as compared to $X\,\sigma$
-%     \item separation AUC ROC: $0.89$ as compared to $0.83$ (this analysis)
-%     \item disp method:
-% \end{itemize}
 
 
 
-% %-------------------------------------------------------------------------------
-% \section{Back up}
-% %-------------------------------------------------------------------------------
-% \appendix
-%
-% \begin{frame}[t]{}
-%   \centering
-%   \textcolor{tugreen}{\Huge{Back Up}}
-% \end{frame}
+%-------------------------------------------------------------------------------
+\section{Back up}
+%-------------------------------------------------------------------------------
+\appendix
+
+\begin{frame}[t]{}
+
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/size_compare.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Separation}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth,page=2]{fig/separation_performance.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Separation}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth,page=3]{fig/separation_performance.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Separation}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth,page=4]{fig/separation_performance.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Energy}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth,page=3]{fig/energy-performance.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]{Energy}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth,page=4]{fig/energy-performance.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/cog_x_compare.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/cog_y_compare.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/width_compare.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/length_compare.pdf}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{fig/skymap_data.pdf}
+    \end{figure}
+\end{frame}
+
 
 \end{document}
